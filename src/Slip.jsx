@@ -18,7 +18,7 @@ const App = () => {
 const creditStyle = {
     position: "absolute",
     right: "10px",
-    top: "20px",
+    top: "30px",
     padding: "8px",
     fontSize: "14px",
     background: "#f9f9f9",
