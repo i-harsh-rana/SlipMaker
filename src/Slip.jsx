@@ -131,7 +131,16 @@ const creditStyle = {
 
   return (
     <div style={{ padding: "20px", fontFamily: "Arial" }}>
-<div style={creditStyle}>By: Harsh Rana 😎</div> 
+    <a
+        href="https://harshrana.in" // Replace with your target URL
+        target="_blank"
+        rel="noopener noreferrer" // Adds security for target="_blank"
+        style={{ textDecoration: "none" }} // Remove underline
+      >
+        <div className="credit" style={creditStyle}>
+          By: Harsh Rana 😎
+        </div>
+      </a>
       
       <h1>Enter Name and Village (in Hindi)</h1>
       
