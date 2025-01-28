@@ -39,7 +39,6 @@ const creditStyle = {
       }
       50% {
         transform: translateY(-5px);
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       }
     }
     .credit {
@@ -48,7 +47,6 @@ const creditStyle = {
     .credit:hover {
       transform: scale(1.2); /* Slightly increase size */
       animation: none; /* Stop the animation on hover */
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
   `;
 
