@@ -12,6 +12,52 @@ const App = () => {
   const [villages, setVillages] = useState(Array(16).fill("")); // Array for 16 villages
   const [titles, setTitles] = useState(Array(16).fill("श्रीमान")); // Array for titles ("श्रीमान" or "श्रीमती")
 
+  const [isHovered, setIsHovered] = useState(false);
+
+// Add this near the top of your component where other styles are defined
+const creditStyle = {
+    position: "absolute",
+    right: "10px",
+    top: "10px",
+    padding: "8px",
+    fontSize: "14px",
+    background: "#f9f9f9",
+    borderRadius: "5px",
+    boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
+    animation: "hoverEffect 2s infinite ease-in-out",
+    cursor: "pointer",
+    color: "black",
+    transition: "all 0.3s ease", // Smooth transition for hover effects
+  };
+
+  // Keyframe animation styles
+  const keyframeStyles = `
+    @keyframes hoverEffect {
+      0%, 100% {
+        transform: translateY(0);
+        text-shadow: none;
+      }
+      50% {
+        transform: translateY(-5px);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+    }
+    .credit {
+      display: inline-block;
+    }
+    .credit:hover {
+      transform: scale(1.2); /* Slightly increase size */
+      animation: none; /* Stop the animation on hover */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+  `;
+
+  // Dynamically inject keyframe styles
+  const styleSheet = document.createElement("style");
+  styleSheet.type = "text/css";
+  styleSheet.innerText = keyframeStyles;
+  document.head.appendChild(styleSheet);
+
   // Update name input
   const handleNameChange = (index, value) => {
     const updatedNames = [...names];
@@ -55,9 +101,9 @@ const App = () => {
   const styles = StyleSheet.create({
     page: {
       fontFamily: "NotoSansDevanagari",
-      paddingLeft: 40,
-      paddingRight: 40,
-      paddingTop: 10
+      paddingLeft: 39,
+      paddingRight: 39,
+      paddingTop: 1
     },
     grid: {
       display: "flex",
@@ -71,8 +117,7 @@ const App = () => {
       minHeight: 98.88,      // 3.48 cm converted to points
       height: 98.88,         // Fixed height for each box (adjust as needed)
       maxHeight: 98.88,      // Ensures the height doesn't exceed 98.88 points
-      border: "1px solid black",
-      marginBottom: "7px",
+      marginBottom: "11px",
       padding: 10,           // More padding for cleaner look
       borderRadius: "10px",
       paddingTop: 12
@@ -86,7 +131,10 @@ const App = () => {
 
   return (
     <div style={{ padding: "20px", fontFamily: "Arial" }}>
+<div style={creditStyle}>By: Harsh Rana 😎</div> 
+      
       <h1>Enter Name and Village (in Hindi)</h1>
+      
       <form style={{ marginBottom: "20px" }}>
         {names.map((name, index) => (
           <div key={index} style={{ marginBottom: "10px" }}>
